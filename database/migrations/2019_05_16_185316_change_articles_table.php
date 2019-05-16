@@ -13,14 +13,8 @@ class ChangeArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            
-            $table->integer('user_id')->unsigned()->default(1);
-            $table->foreign('user_id')->references('id')->on('users');
-
-            $table->integer('category_id')->unsigned()->default(1);
-            $table->foreign('category_id')->references('id')->on('categoties');
-
+        Schema::table('articles', function (Blueprint $table) {
+            //
         });
     }
 
@@ -31,6 +25,8 @@ class ChangeArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::table('articles', function (Blueprint $table) {
+            //
+        });
     }
 }
