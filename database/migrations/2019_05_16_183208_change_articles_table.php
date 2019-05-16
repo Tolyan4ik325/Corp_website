@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
+class ChangeArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,13 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title', 255);
-            $table->text('text');
-            $table->text('desc');
-            $table->string('alias', 150)->unique();
-            $table->string('img');
+            
+            $table->integer('user_id')->unsigned()->defauld(1);
+            $table->foreign('user_id')->references('id')->on('users');
 
+            $table->integer('cetegory_id')->unsigned()->defauld(1);
+            $table->foreign('cetegory_id')->references('id')->on('categoties');
 
-            $table->timestamps();
         });
     }
 
