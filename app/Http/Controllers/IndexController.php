@@ -11,6 +11,18 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct() {
+
+        parent::__construct();
+
+        $this->bar = 'right';
+
+        $this->template = env('THEME').'.index';
+    }
+
+
     public function index()
     {
         //
