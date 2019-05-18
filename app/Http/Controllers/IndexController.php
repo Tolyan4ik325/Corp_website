@@ -1,32 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Corp\Http\Requests;
+
+use Corp\Repositories\MenusRepository;
+
 class IndexController extends SiteController
 {
+    
+    public function __construct() {
+        
+        parent::__construct(new MenusRepository(new \Corp\Menu));
+        
+        
+        $this->bar = 'right';
+        $this->template = env('THEME').'.index';
+        
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-    public function __construct() {
-
-        parent::__construct();
-
-        $this->bar = 'right';
-
-        $this->template = env('THEME').'.index';
-    }
-
-
     public function index()
     {
         //
-
+        
+        
         return $this->renderOutput();
     }
 
