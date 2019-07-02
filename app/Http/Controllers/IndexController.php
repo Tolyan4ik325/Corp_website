@@ -30,6 +30,10 @@ class IndexController extends SiteController
     {
         //
         
+        $sliders = view(env('THEME').'.slider')->render();
+        $this->vars = array_add($this->vars, 'sliders', $sliders);
+
+
         
         return $this->renderOutput();
     }
