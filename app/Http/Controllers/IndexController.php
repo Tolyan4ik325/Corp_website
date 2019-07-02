@@ -60,7 +60,6 @@ class IndexController extends SiteController
             return $item;
 
         });
-        dd($sliders);
         return $sliders;
 
         
