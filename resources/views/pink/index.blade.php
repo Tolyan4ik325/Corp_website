@@ -5,5 +5,5 @@
 @endsection
 
 @section('slider')
-	{!! $slider !!}
+	{!! $sliders !!}
 @endsection

@@ -122,7 +122,7 @@
                 
                 <!-- START SLIDER -->
 				
-				
+				@yield('slider')
 				<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-right">
 				    <div class="inner group">
