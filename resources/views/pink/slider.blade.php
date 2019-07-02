@@ -1,5 +1,20 @@
+
+
+@if(count($sliders) > 0)
+
 <div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
 				    <ul class="slider">
+
+					@foreach($sliders as $slider)
+						<li>
+							 <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
+
+							 </div>
+						</li>
+					@endforeach
+
+
+
 				        <li>
 				            <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/slider-cycle/xx.jpg') no-repeat center center" style="height:483px;">
 				                <div class="slide-content-holder inner" style="height:483px;">
@@ -113,3 +128,9 @@
 				<div class="mobile-slider">
 				    <div class="slider fixed-image inner"><img src="{{ asset(env('THEME')) }}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
 				</div>
+
+
+@endif
+
+
+
