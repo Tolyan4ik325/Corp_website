@@ -10,16 +10,19 @@ use Corp\Repositories\MenusRepository;
 
 use Corp\Repositories\SlidersRepository;
 
+use Corp\Repositories\PortfoliosRepository;
+
 use Config;
 
 class IndexController extends SiteController
 {
     
-    public function __construct(SlidersRepository $s_rep) {
+    public function __construct(SlidersRepository $s_rep, PortfoliosRepository $p_rep) {
         
         parent::__construct(new MenusRepository(new \Corp\Menu));
         
         $this->s_rep = $s_rep;
+        $this->p_rep = $p_rep;
         $this->bar = 'right';
         $this->template = env('THEME').'.index';
         
@@ -35,8 +38,7 @@ class IndexController extends SiteController
         //
         
         $portfolio = $this->getPortfolio();
-
-
+        dd($portfolio);
         $sliderItems = $this->getSliders();
 
         $sliders = view(env('THEME').'.slider')->with('sliders', $sliderItems)->render();
@@ -50,7 +52,7 @@ class IndexController extends SiteController
 
     protected function getPortfolio() {
 
-        $portfolio = TRUE;
+        $portfolio = $this->p_rep->get();
 
         return $portfolio;
 
