@@ -27,3 +27,5 @@ Route::resource('/', 'IndexController', [
 										]
 
 									]);
+
+Route::resource('portfolios', 'PortfolioController');
