@@ -38,7 +38,10 @@ class IndexController extends SiteController
         //
         
         $portfolio = $this->getPortfolio();
-        dd($portfolio);
+
+        $content = view(env('THEME').'.content')->with('portfolios', $portfolio)->render();
+        $this->vars = array_add($this->vars, 'content', $content);        
+
         $sliderItems = $this->getSliders();
 
         $sliders = view(env('THEME').'.slider')->with('sliders', $sliderItems)->render();
