@@ -1,27 +1,41 @@
+@if($portfolios && count($portfolios) > 0)
+
+
 <div id="content-home" class="content group">
 				            <div class="hentry group">
 				                <div class="section portfolio">
 				                    
 				                    <h3 class="title">Latest projects</h3>
 				                    
-				                    <div class="hentry work group portfolio-sticky portfolio-full-description">
-				                        <div class="work-thumbnail">
+									@foreach($portfolios as $k=>$item)
+										
+										@if($k==0)
+											<div class="hentry work group portfolio-sticky portfolio-full-description">
+				                      		  <div class="work-thumbnail">
 				                            <a class="thumb"><img src="{{ asset(env('THEME')) }}/images/projects/0081-385x192.jpg" alt="0081" title="0081" /></a>
 				                            <div class="work-overlay">
-				                                <h3><a href="project.html">Steep This!</a></h3>
+				                                <h3><a href="#">{{ $item->title }}</a></h3>
 				                                <p class="work-overlay-categories"><img src="{{ asset(env('THEME')) }}/images/categories.png" alt="Categories" /> in: <a href="category.html">Brand Identity</a>, <a href="category.html">Web Design</a></p>
 				                            </div>
 				                        </div>
 				                        <div class="work-description">
-				                            <h2><a href="project.html">Steep This!</a></h2>
-				                            <p class="work-categories">in: <a href="category.html">Brand Identity</a>, <a href="category.html">Web Design</a></p>
-				                            <p>Nullam volutpat, mauris scelerisque iaculis semper, justo odio rutrum urna, at cursus urna nisl et ipsum. Donec dapibus lacus nec sapien faucibus eget suscipit lorem mattis.</p>
-				                            <p>Donec non mauris ac nulla consectetur pretium sit amet rhoncus [...]
+				                            <h2><a href="project.html">{{ $item->title }}</a></h2>
+				                            <p class="work-categories">in: <a href="#">{{ $item->filter->title }}</a></p>
+				                            {{ $item->text, 200 }}
+
+
 				                                <a href="project.html" class="read-more">|| Read more</a>
 				                        </div>
 				                    </div>
 				                    
 				                    <div class="clear"></div>
+				                    	@continue
+										@endif
+
+									@endforeach
+
+
+				                    
 				                    
 				                    <div class="portfolio-projects">
 				                        
@@ -94,3 +108,6 @@
 				            </div>
 				            <!-- END COMMENTS -->
 				        </div>
+@else 
+<p>Работ на данный момент не существует</p>
+@endif
