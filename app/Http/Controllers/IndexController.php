@@ -34,6 +34,9 @@ class IndexController extends SiteController
     {
         //
         
+        $portfolio = $this->getPortfolio();
+
+
         $sliderItems = $this->getSliders();
 
         $sliders = view(env('THEME').'.slider')->with('sliders', $sliderItems)->render();
@@ -43,6 +46,17 @@ class IndexController extends SiteController
         
         return $this->renderOutput();
     }
+
+
+    protected function getPortfolio() {
+
+        $portfolio = TRUE;
+
+        return $portfolio;
+
+    }
+
+
 
     public function getSliders() {
 
