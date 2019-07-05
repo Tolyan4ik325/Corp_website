@@ -52,7 +52,7 @@ class IndexController extends SiteController
 
     protected function getPortfolio() {
 
-        $portfolio = $this->p_rep->get();
+        $portfolio = $this->p_rep->get('*', Config::get('settings.home_port_count'));
 
         return $portfolio;
 
