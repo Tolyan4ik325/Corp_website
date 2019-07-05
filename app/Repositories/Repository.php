@@ -14,7 +14,26 @@ class Repository {
 			$builder->take($take);
 		}
 
-		return $builder->get();
+		return $this->check($builder->get());
+	}
+
+
+	protected function check($result) {
+
+		if($result->isEmpty()) {
+			return FALSE;
+		}
+
+		$result->transform(function($item, $key) {
+
+			$item->img = json_decode($item->img);
+
+			return $item;
+
+		});
+
+		return $result;
+
 	}
 }
 
