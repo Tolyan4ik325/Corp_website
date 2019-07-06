@@ -1,3 +1,3 @@
  <div class="sidebar group">
-		{{$content_rightBar}}
+		{!! $content_rightBar !!}
   </div>
