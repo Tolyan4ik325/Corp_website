@@ -47,13 +47,18 @@ class IndexController extends SiteController
         $sliders = view(env('THEME').'.slider')->with('sliders', $sliderItems)->render();
         $this->vars = array_add($this->vars, 'sliders', $sliders);
 
-        $articles = FALSE;
+        $articles = $this->getArticles();
 
         $this->contentRightBar = view(env('THEME').'.indexBar')->with('articles', $articles)->render();
         
         return $this->renderOutput();
     }
 
+    protected function getArticles() {
+        $articles = $this->a_rep->get();
+
+        return $articles;
+    }
 
     protected function getPortfolio() {
 
