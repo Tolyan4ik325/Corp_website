@@ -2,6 +2,12 @@
 
 namespace Corp\Http\Controllers;
 
+use Corp\Repositories\MenusRepository;
+
+use Corp\Repositories\PortfoliosRepository;
+
+use Corp\Repositories\ArticlesRepository;
+
 use Illuminate\Http\Request;
 
 class ArticlesController extends SiteController
@@ -13,8 +19,26 @@ class ArticlesController extends SiteController
         $this->p_rep = $p_rep;
         $this->a_rep = $a_rep;
         $this->bar = 'right';
-        
+
         $this->template = env('THEME').'.articles';
         
+    }
+
+
+    public function index()
+    {
+        //
+        
+       	$articles = $this->getArticles();
+
+        return $this->renderOutput();
+    }
+
+    public function getArticles($alias = FALSE) {
+
+    	$articles = $this->a_rep->get(['title', 'alias', 'created_at', 'img', 'desc'], FALSE, TRUE);
+    	if($articles) {
+    		// $articles->load('user', 'category', 'comments');
+    	}
     }
 }
