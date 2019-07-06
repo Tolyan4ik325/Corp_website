@@ -20,7 +20,7 @@
 				                <div class="meta group">
 				                    <p class="author"><span>by <a href="#" title="Posts {{$article->user->name}}" rel="author">{{$article->user->name}}</a></span></p>
 				                    <p class="categories"><span>In: <a href="{{ route('articlesCat', ['cat_alias'=> $article->category->alias])}}" title="View all posts in {{$article->category->title}}" rel="category tag">{{$article->category->title}}</a></span></p>
-				                    <p class="comments"><span><a href="article.html#respond" title="Comment on Section shortcodes &amp; sticky posts!">No comments</a></span></p>
+				                    <p class="comments"><span><a href="{{ route('articlesCat', ['cat_alias'=> $article->category->alias])}}#respond" title="Comment on Section shortcodes &amp; sticky posts!">{{ count($article->comments) ? count($article->comments) : 0}} {{ Lang::choice('ru.comments', count($article->comments)) }}</a></span></p>
 				                </div>
 				                <!-- post content -->
 				                <div class="the-content group">
