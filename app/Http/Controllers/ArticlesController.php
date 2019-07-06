@@ -30,20 +30,25 @@ class ArticlesController extends SiteController
         //
         
        	$articles = $this->getArticles();
-        
-        $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
-        $this->vars = array_add($this->vars, 'content', $content); 
 
+        
+         $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
+        $this->vars = array_add($this->vars, 'content', $content);
+        
         return $this->renderOutput();
+
+        
 
     }
 
     public function getArticles($alias = FALSE) {
+        
+        $articles = $this->a_rep->get(['title', 'alias', 'created_at', 'img', 'desc', 'user_id', 'category_id'], FALSE, TRUE);
+            
+        if($articles) {
+         // $articles->load('user', 'category', 'comments');
+        }
 
-    	$articles = $this->a_rep->get(['title', 'alias', 'created_at', 'img', 'desc'], FALSE, TRUE);
-
-    	// if($articles) {
-    	// 	// $articles->load('user', 'category', 'comments');
-    	// }
+        return $articles;
     }
 }
