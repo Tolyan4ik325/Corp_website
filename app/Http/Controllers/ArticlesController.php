@@ -30,7 +30,7 @@ class ArticlesController extends SiteController
         //
         
        	$articles = $this->getArticles();
-        dd($articles);
+        
 
 
         return $this->renderOutput();
@@ -40,6 +40,7 @@ class ArticlesController extends SiteController
     public function getArticles($alias = FALSE) {
 
     	$articles = $this->a_rep->get(['title', 'alias', 'created_at', 'img', 'desc'], FALSE, TRUE);
+        dd($articles);
     	// if($articles) {
     	// 	// $articles->load('user', 'category', 'comments');
     	// }
