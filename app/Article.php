@@ -4,7 +4,7 @@ namespace Corp;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model
+class Article extends Model
 {
     //
 }

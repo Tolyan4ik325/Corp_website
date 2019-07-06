@@ -30,15 +30,18 @@ class ArticlesController extends SiteController
         //
         
        	$articles = $this->getArticles();
+        dd($articles);
+
 
         return $this->renderOutput();
+
     }
 
     public function getArticles($alias = FALSE) {
 
     	$articles = $this->a_rep->get(['title', 'alias', 'created_at', 'img', 'desc'], FALSE, TRUE);
-    	if($articles) {
-    		// $articles->load('user', 'category', 'comments');
-    	}
+    	// if($articles) {
+    	// 	// $articles->load('user', 'category', 'comments');
+    	// }
     }
 }
