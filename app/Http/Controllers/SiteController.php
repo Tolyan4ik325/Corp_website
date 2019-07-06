@@ -29,7 +29,7 @@ class SiteController extends Controller
     protected $contentLeftBar = FALSE;
     
     
-    protected $bar = FALSE;
+    protected $bar = 'no';
     
     
     public function __construct(MenusRepository $m_rep) {
@@ -52,7 +52,11 @@ class SiteController extends Controller
             $this->vars = array_add($this->vars,'rightBar',$rightBar);
         }
 
-        
+        $this->vars = array_add($this->vars,'bar',$this->bar);
+
+        $footer = view(env('THEME').'.footer')->render();
+        $this->vars = array_add($this->vars,'footer',$footer);
+
         return view($this->template)->with($this->vars);
     }
     
