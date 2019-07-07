@@ -30,12 +30,12 @@ class AppServiceProvider extends ServiceProvider
 
         // Code for see SQL requests
 
-    //     DB::listen(function($query) {
+        // DB::listen(function($query) {
 
-    //         echo '<h1>' .$query->sql.'</h1>';
+        //     echo '<h1>' .$query->sql.'</h1>';
 
-    //     });
-    // }
+        // });
+    }
 
     /**
      * Register any application services.
