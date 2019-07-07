@@ -1,12 +1,12 @@
 <?php
 namespace Corp\Repositories;
 
-use Corp\Comments;
+use Corp\Comment;
 
 class CommentsRepository extends Repository{
 
-	public function __construct(Comments $comments) {
-		$this->model = $comments;
+	public function __construct(Comment $comment) {
+		$this->model = $comment;
 	}
 
 }
