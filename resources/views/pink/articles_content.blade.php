@@ -24,10 +24,8 @@
 				                </div>
 				                <!-- post content -->
 				                <div class="the-content group">
-				                    <p>Fusce nec accumsan eros. Aenean ac orci a magna vestibulum posuere quis nec nisi. Maecenas rutrum vehicula condimentum. Donec volutpat nisl ac mauris consectetur gravida.</p>
-				                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel vulputate nibh. Pellentesque habitant <strong>morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas.</p>
-				                    <p>In facilisis ornare arcu, sodales facilisis neque blandit ac. Ut blandit ipsum quis arcu adipiscing <strong>sit amet semper</strong> sem feugiat. Nam sed dapibus arcu. Nullam eleifend molestie lectus. Nullam nec risus purus.</p>
-				                    <p><a href="article.html" class="btn   btn-beetle-bus-goes-jamba-juice-4 btn-more-link">→ Read more</a></p>
+				                    {!! $article->desc !!}
+				                    <p><a href="{{ route('articles.show', ['alias' => $article->alias])}}" class="btn   btn-beetle-bus-goes-jamba-juice-4 btn-more-link">→ {{lang::get('ru.read_more')}}</a></p>
 				                </div>
 				                <div class="clear"></div>
 				            </div>
