@@ -35,7 +35,7 @@ class ArticlesController extends SiteController
          $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
         $this->vars = array_add($this->vars, 'content', $content);
 
-        $comments = Array();
+        $comments = $this->getComments(config('settings.resent_comments'));
         $portfolios = Array();
 
         $this->contentRightBar = view(env('THEME').'.articlesBar')->with(['comments' => $comments, 'portfolios' => $portfolios]);
