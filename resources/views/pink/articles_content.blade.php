@@ -51,7 +51,9 @@
 									@if($articles->currentPage() !== $articles->lastPage())
 										<a href="{{ $articles->url($articles->currentPage() + 1 ) }}">{{ Lang::get('pagination.next')}}</a>
 									@endif
+								@else
 
+								<p>{{ Lang::get('ru.articles_no')}}</p>
 								@endif
 
 				            </div>
