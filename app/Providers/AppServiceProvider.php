@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Blade;
 
+use DB;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,7 +27,15 @@ class AppServiceProvider extends ServiceProvider
             return "<?php $name = $val ?>"; 
 
         }); 
-    }
+
+        // Code for see SQL requests
+
+    //     DB::listen(function($query) {
+
+    //         echo '<h1>' .$query->sql.'</h1>';
+
+    //     });
+    // }
 
     /**
      * Register any application services.
