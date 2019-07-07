@@ -12,6 +12,8 @@ use Corp\Repositories\CommentsRepository;
 
 use Illuminate\Http\Request;
 
+use Corp\Category;
+
 class ArticlesController extends SiteController
 {
     public function __construct(PortfoliosRepository $p_rep, ArticlesRepository $a_rep, CommentsRepository $c_rep) {
@@ -28,11 +30,11 @@ class ArticlesController extends SiteController
     }
 
 
-    public function index()
+    public function index($cat_alias = FALSE)
     {
         //
         
-       	$articles = $this->getArticles();
+        $articles = $this->getArticles($cat_alias);
 
         
          $content = view(env('THEME').'.articles_content')->with('articles', $articles)->render();
@@ -66,8 +68,15 @@ class ArticlesController extends SiteController
     }
 
     public function getArticles($alias = FALSE) {
+
+        $where= FALSE;
+
+        if($alias) {
+            $id = Category::select('id')->where('alias', $alias)->first()->id;
+            $where = ['category_id', $id];
+        }
         
-        $articles = $this->a_rep->get(['id','title', 'alias', 'created_at', 'img', 'desc', 'user_id', 'category_id'], FALSE, TRUE);
+        $articles = $this->a_rep->get(['id','title', 'alias', 'created_at', 'img', 'desc', 'user_id', 'category_id'], FALSE, TRUE, $where);
             
         if($articles) {
            $articles->load('user', 'category', 'comments');
