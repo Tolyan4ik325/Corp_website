@@ -36,14 +36,24 @@ class ArticlesController extends SiteController
         $this->vars = array_add($this->vars, 'content', $content);
 
         $comments = $this->getComments(config('settings.resent_comments'));
-        $portfolios = Array();
+        $portfolios = $this->getComments(config('settings.resent_portfolios'));
 
         $this->contentRightBar = view(env('THEME').'.articlesBar')->with(['comments' => $comments, 'portfolios' => $portfolios]);
         
         return $this->renderOutput();
+   
+    }
 
+    public function getComments($take) {
+        $comments = 
+        return $comments;
+
+    }
+
+    public function getPortfolios($take) {
+        $portfolios = TRUE;
+        return $portfolios;
         
-
     }
 
     public function getArticles($alias = FALSE) {
