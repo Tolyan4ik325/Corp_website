@@ -43,7 +43,7 @@
 				                    <span>{{ count($article->comments )}}</span> {{Lang::choice('ru.comments', count($article->comments))}}    
 				                </h3>
 
-				                @set($com, $acticl->comments->groupBy('parent_id'))
+				                @set($com, $article->comments->groupBy('parent_id'))
 				                <ol class="commentlist group">
 
 				                	@foreach($com as $k => $comments)
@@ -54,60 +54,8 @@
 
 										@include(env('THEME').'.comment', ['items' => $comments])
 				                	@endforeach
-				                    <li class="comment even depth-1">
-				                        <div class="comment-container">
-				                            <div class="comment-author vcard">
-				                                <img alt="" src="images/avatar/unknow.png" class="avatar" height="75" width="75" />
-                                                <cite class="fn">Anonymous</cite>                 
-				                            </div>
-				                            <!-- .comment-author .vcard -->
-				                            <div class="comment-meta commentmetadata">
-				                                <div class="intro">
-				                                    <div class="commentDate">
-				                                        <a href="#comment-2">
-				                                        September 24, 2012 at 1:31 pm</a>                        
-				                                    </div>
-				                                    <div class="commentNumber">#&nbsp;1</div>
-				                                </div>
-				                                <div class="comment-body">
-				                                    <p>Hi all, i’m a guest and this is the guest’s awesome comments template!</p>
-				                                </div>
-				                                <div class="reply group">
-				                                    <a class="comment-reply-link" href="#respond" onclick="return addComment.moveForm(&quot;comment-2&quot;, &quot;2&quot;, &quot;respond&quot;, &quot;41&quot;)">Reply</a>                    
-				                                </div>
-				                                <!-- .reply -->
-				                            </div>
-				                            <!-- .comment-meta .commentmetadata -->
-				                        </div>
-				                        <!-- #comment-##  -->
-				                    </li>
-				                    <li class="comment bypostauthor odd">
-				                        <div class="comment-container">
-				                            <div class="comment-author vcard">
-				                                <img alt="" src="images/avatar/nicola.jpeg" class="avatar" height="75" width="75" />
-                                                <cite class="fn">nicola</cite>                 
-				                            </div>
-				                            <!-- .comment-author .vcard -->
-				                            <div class="comment-meta commentmetadata">
-				                                <div class="intro">
-				                                    <div class="commentDate">
-				                                        <a href="#">
-				                                        September 24, 2012 at 1:32 pm</a>                        
-				                                    </div>
-				                                    <div class="commentNumber">#&nbsp;2</div>
-				                                </div>
-				                                <div class="comment-body">
-				                                    <p>While i’m the author of the post. My comment template is different, something like a “sticky comment”!</p>
-				                                </div>
-				                                <div class="reply group">
-				                                    <a class="comment-reply-link" href="#respond" onclick="return addComment.moveForm(&quot;comment-3&quot;, &quot;3&quot;, &quot;respond&quot;, &quot;41&quot;)">Reply</a>                    
-				                                </div>
-				                                <!-- .reply -->
-				                            </div>
-				                            <!-- .comment-meta .commentmetadata -->
-				                        </div>
-				                        <!-- #comment-##  -->
-				                    </li>
+
+
 				                </ol>
                                 
 				                <!-- START TRACKBACK & PINGBACK -->
