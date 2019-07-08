@@ -84,4 +84,22 @@ class ArticlesController extends SiteController
 
         return $articles;
     }
+
+     public function show($alias = FALSE) {
+
+        $article->$this->a_rep->one($alias, ['comments' => TRUE]);
+
+        $article = FALSE;
+        $content = view(env('THEME').'.article_content')->with('article', $article)->render();
+        $this->vars = array_add($this->vars, 'content', $content);
+
+        $comments = $this->getComments(config('settings.resent_comments'));
+        $portfolios = $this->getPortfolios(config('settings.resent_portfolios'));
+
+
+        $this->contentRightBar = view(env('THEME').'.articlesBar')->with(['comments' => $comments, 'portfolios' => $portfolios]);
+
+        return $this->renderOutput();
+     }
+    
 }

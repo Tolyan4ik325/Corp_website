@@ -9,6 +9,17 @@ class ArticlesRepository extends Repository{
 		$this->model = $articles;
 	}
 
+	public function one($alias, $attr = array()) {
+		$article = parent::one($alias, $attr);
+
+		if($article && !empty($attr)) {
+			$article->load('comments');
+			$article->comments->load('user');
+		}
+
+		return $article;
+	}
+
 }
 
 ?>

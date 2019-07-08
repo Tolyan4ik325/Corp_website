@@ -43,6 +43,13 @@ class Repository {
 		return $result;
 
 	}
+
+	public function one($alias, $attr = array()) {
+		$result = $this->model->where('alias', $alias)->first();
+
+		return $result;
+	}
+
 }
 
 ?>
