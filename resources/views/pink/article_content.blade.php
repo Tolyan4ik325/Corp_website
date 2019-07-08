@@ -1,30 +1,30 @@
 <div id="content-single" class="content group">
 				            <div class="hentry hentry-post blog-big group ">
 				                <!-- post featured & title -->
-
-				                @if($article) 
-
+				                
+				                @if($article)
+				                
 				                <div class="thumbnail">
 				                    <!-- post title -->
-				                    <h1 class="post-title">{{ $article->title }}</h1>
+				                    <h1 class="post-title"><a href="#">{{ $article->title }}</a></h1>
 				                    <!-- post featured -->
 				                    <div class="image-wrap">
-				                        <img src="{{asset(env('THEME'))}}/images/articles/{{ json_decode($article->img)->max }}" alt="00212" title="00212" />        
+				                        <img src="{{ asset(env('THEME')) }}/images/articles/{{ json_decode($article->img)->max }}" alt="00212" title="00212" />        
 				                    </div>
 				                    <p class="date">
-				                        <span class="month">{{ $article->created_at->format('M')}}</span>
-				                        <span class="day">{{ $article->created_at->format('d')}}</span>
+				                        <span class="month">{{ $article->created_at->format('M') }}</span>
+				                        <span class="day">{{ $article->created_at->format('d') }}</span>
 				                    </p>
 				                </div>
 				                <!-- post meta -->
 				                <div class="meta group">
 				                    <p class="author"><span>by <a href="#" title="{{ $article->title }}" rel="author">{{ $article->user->name }}</a></span></p>
-				                    <p class="categories"><span>In: <a href="{{route('articlesCat',['cat_alias'=>$article->category->alias])}}" title="View all posts in {{$article->category->title}}" rel="category tag">{{$article->category->title}}</a></p>
-				                    <p class="comments"><span><a href="#comments" title="Comment on This is the title of the first article. Enjoy it.">{{count($article->comments) ? count($article->comments) : '0' }} {{Lang::choice('ru.comments', count($article->comments))}}</a></span></p>
+				                    <p class="categories"><span>In: <a href="{{ route('articlesCat',['cat_alias'=>$article->category->alias]) }}" title="View all posts in {{ $article->category->title }}" rel="category tag">{{ $article->category->title }}</a></p>
+				                    <p class="comments"><span><a href="#comments" title="Comment on This is the title of the first article. Enjoy it.">{{ count($article->comments) ? count($article->comments) : '0' }} {{Lang::choice('ru.comments',count($article->comments))}}</a></span></p>
 				                </div>
 				                <!-- post content -->
 				                <div class="the-content single group">
-				                    {!! $article->text !!}
+				                    <p>{!! $article->text !!}</p>
 				                    <div class="socials">
 				                        <h2>love it, share it!</h2>
 				                        <a href="https://www.facebook.com/sharer.html?u=http%3A%2F%2Fyourinspirationtheme.com%2Fdemo%2Fpinkrio%2F2012%2F09%2F24%2Fthis-is-the-title-of-the-first-article-enjoy-it%2F&amp;t=This+is+the+title+of+the+first+article.+Enjoy+it." class="socials-small facebook-small" title="Facebook">facebook</a>
@@ -40,21 +40,22 @@
 				            <!-- START COMMENTS -->
 				            <div id="comments">
 				                <h3 id="comments-title">
-				                    <span>{{ count($article->comments )}}</span> {{Lang::choice('ru.comments', count($article->comments))}}    
+				                    <span>{{ count($article->comments) }}</span> {{ Lang::choice('ru.comments',count($article->comments)) }}    
 				                </h3>
-
-				                @set($com, $article->comments->groupBy('parent_id'))
+				                
+				                @set($com,$article->comments->groupBy('parent_id'))
+				                
 				                <ol class="commentlist group">
-
-				                	@foreach($com as $k => $comments)
-										
-										@if($k !== 0)
-											@break
-										@endif
-
-										@include(env('THEME').'.comment', ['items' => $comments])
-				                	@endforeach
-
+				                
+				                @foreach($com as $k => $comments)
+				                	
+				                	@if($k !== 0)
+				                		@break
+				                	@endif
+				                	
+				                	@include(env('THEME').'.comment',['items' => $comments])
+				                	
+				                @endforeach
 
 				                </ol>
                                 
@@ -80,5 +81,6 @@
 				                <!-- #respond -->
 				            </div>
 				            <!-- END COMMENTS -->
+				            
 				            @endif
 				        </div>
