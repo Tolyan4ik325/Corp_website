@@ -28,6 +28,13 @@
 	    <!-- .comment-meta .commentmetadata -->
 	</div>
 	<!-- #comment-##  -->
+	
+	@if(isset($com[$item->id]))
+		<ul class="children">
+			@include(env('THEME').'.comment', ['items'=> $com[$item->id]])
+		</ul>
+	@endif
+
 </li>
 
 @endforeach
