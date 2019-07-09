@@ -42,6 +42,8 @@
 				                <h3 id="comments-title">
 				                    <span>{{ count($article->comments)}}</span> {{ Lang::choice('ru.comments', count($article->comments))}}   
 				                </h3>
+								@set($com, $article->comments->groupBy('parent_id'))
+
 				                <ol class="commentlist group">
 				                    <li class="comment even depth-1">
 				                        <div class="comment-container">
