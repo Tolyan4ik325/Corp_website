@@ -42,9 +42,20 @@
 				                <h3 id="comments-title">
 				                    <span>{{ count($article->comments)}}</span> {{ Lang::choice('ru.comments', count($article->comments))}}   
 				                </h3>
+
 								@set($com, $article->comments->groupBy('parent_id'))
 
 				                <ol class="commentlist group">
+
+				                @foreach($com as $k => $comments)
+
+				                	@if($k !== 0)
+										@break
+				                	@endif
+
+				                	@include(env('THEME').'.comment', ['items' => $comments])
+
+				                @endforeach
 				                    <li class="comment even depth-1">
 				                        <div class="comment-container">
 				                            <div class="comment-author vcard">
