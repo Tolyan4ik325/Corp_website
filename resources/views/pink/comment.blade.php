@@ -2,6 +2,9 @@
 <li id="li-comment-{{$item->id}}" class="comment even {{ ($item->user_id == $article->user_id) ? 'bypostauthor odd' :: ''}}">
 	<div id="comment-{{$item->id}}" class="comment-container">
 	    <div class="comment-author vcard">
+
+			@set($hash, isset($item->email) ? md5($item->email) : md5($item->user->email))
+
 	        <img alt="" src="images/avatar/unknow.png" class="avatar" height="75" width="75" />
 	        <cite class="fn">Anonymous</cite>                 
 	    </div>
