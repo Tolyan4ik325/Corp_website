@@ -40,7 +40,7 @@
 				            <!-- START COMMENTS -->
 				            <div id="comments">
 				                <h3 id="comments-title">
-				                    <span>2</span> comments    
+				                    <span>{{ count($article->comments)}}</span> {{ Lang::choice('ru.comments', count($article->comments))}}   
 				                </h3>
 				                <ol class="commentlist group">
 				                    <li class="comment even depth-1">
