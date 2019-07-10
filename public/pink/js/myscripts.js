@@ -6,6 +6,13 @@ jQuery(document).ready(function($) {
 
 	});
 
+	$('#commentform').on('click', '#submit', function(e) {
+
+		e.preventDefault();
+
+		var comParent = $(this);
+
+	});
 
 
 });
