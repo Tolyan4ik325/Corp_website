@@ -78,6 +78,7 @@
         <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/shortcodes.js"></script>
 		<script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.colorbox-min.js"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset(env('THEME')) }}/js/jquery.tweetable.js"></script>
+        <script type="text/javascript" src="{{ asset(env('THEME')) }}/js/myscripts.js"></script>
 
     </head>
     <!-- END HEAD -->
