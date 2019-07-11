@@ -4,6 +4,8 @@ namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Validator;
+
 class CommentController extends SiteController
 {
     /**
@@ -37,6 +39,16 @@ class CommentController extends SiteController
         //
 
         $data = $request->except('_token', 'comment_post_ID', 'comment_parent');
+
+        $data['article_id'] = $request->input('comment_post_ID');
+        $data['parent_id'] = $request->input('comment_post_ID');
+
+        $validator = Validator::make($data, [
+            'article_id' => 'integer|requierd',
+            'parent_id' => 'integer|required',
+            'text' => 'string|required'
+
+        ]);
 
         echo json_encode(['hello'=>'world']);
         exit();
