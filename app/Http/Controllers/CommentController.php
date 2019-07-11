@@ -50,6 +50,12 @@ class CommentController extends SiteController
 
         ]);
 
+        $validator->sometimes(['name', 'email'], 'required|max:255', function($input) {
+
+            return !Auth::check();
+
+        });
+
         echo json_encode(['hello'=>'world']);
         exit();
     }
