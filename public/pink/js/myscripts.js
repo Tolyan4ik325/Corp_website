@@ -23,11 +23,27 @@ jQuery(document).ready(function($) {
 							
 							url:$('#commentform').attr('action'),
 							data:data,
+							headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 							type:'POST',
-							headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')},
 							datatype:'JSON',
 							success: function(html) {
-								
+								if(html.error) {
+
+								}
+								else if(html.success) {
+									$('.wrap_result')
+													.append('<br/ ><strong>Сохранено!</strong>')
+													.delay(2000)
+													.fadeOut(500,function() {
+
+													if(html.data.parent_id > 0) {
+															comParent.parents('div#respond').prev().after('<ul class="children">' + html.comment + '</ul>');
+														}
+
+														$('$cancel-comment-reply-link').click();
+
+													})
+								}
 							},
 							error:function() {
 								
