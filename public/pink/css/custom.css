@@ -35,3 +35,8 @@ Good work... and good luck! :)
     display: none;
     z-index: 5005
 }
+
+
+.borGreen {
+    border: 2px solid green !important;
+}

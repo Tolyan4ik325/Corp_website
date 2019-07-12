@@ -62,7 +62,10 @@ jQuery(document).ready(function($) {
 								}
 							},
 							error:function() {
-								
+								$('.wrap_result').css('color', 'red').append('<br/><strong>Ошибка! </strong>');
+								$('.wrap_result').delay(2000).fadeOut(500, function() {
+									$('$cancel-comment-reply-link').click();
+								});
 							}
 							
 						});
