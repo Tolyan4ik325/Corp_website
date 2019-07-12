@@ -40,12 +40,31 @@ class PortfolioController extends SiteController
    
     }
 
-    public function getPortfolios() {
-    	$portfolios = $this->p_rep->get('*', FALSE, TRUE);
+    public function getPortfolios($take = FALSE, $paginate = TRUE) {
+    	$portfolios = $this->p_rep->get('*', $take, $paginate);
     	if($portfolios) {
     		$portfolios->load('filter');
     	}
 
     	return $portfolios;
     }
+
+    public function show($alias) {
+
+    	$portfolio = $this->p_rep->one($alias);
+
+
+        $this->title = $portfolio->title;
+        $this->keywords = $portfolio->keywords;
+        $this->meta_desc = $portfolio->meta_desc;
+
+        // $content = view(env('THEME').'.article_content')->with('article', $article)->render();
+        // $this->vars = array_add($this->vars, 'content', $content);
+
+        $portfolios = $this->getPortfolios(config('settings.other_portfolios'), FALSE);
+
+        // dd($portfolios);
+
+        return $this->renderOutput();
+     }
 }
