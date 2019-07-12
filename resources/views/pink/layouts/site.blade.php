@@ -85,7 +85,7 @@
     <!-- END HEAD -->
     
     <!-- START BODY -->
-    <body class="no_js responsive {{ (Route::currentRouteName() == 'home') || (Route::currentRouteName() == 'portfolios.index') ? 'page-template-home-php' : '' }} stretched">
+    <body class="no_js responsive {{ (Route::currentRouteName() == 'home') || (Route::currentRouteName() == 'portfolios.index') || (Route::currentRouteName() == 'portfolios.show') ? 'page-template-home-php' : '' }} stretched">
         
         <!-- START BG SHADOW -->
         <div class="bg-shadow">

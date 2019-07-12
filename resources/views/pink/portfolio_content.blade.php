@@ -2,25 +2,26 @@
 				            <div class="clear"></div>
 				            <div class="posts">
 				                <div class="group portfolio-post internal-post">
+
+				                	@if($portfolio)
+
 				                    <div id="portfolio" class="portfolio-full-description">
 				                        
 				                        <div class="fulldescription_title gallery-filters">
-				                            <h1>Steep This!</h1>
+				                            <h1>{{ $portfolio->title }}</h1>
 				                        </div>
 				                        
 				                        <div class="portfolios hentry work group">
 				                            <div class="work-thumbnail">
-				                                <a class="thumb"><img src="images/projects/0081-700x345.jpg" alt="0081" title="0081" /></a>
+				                                <a class="thumb"><img src="{{asset(env('THEME'))}}/images/projects/{{$portfolio->img->max}}" alt="0081" title="0081" /></a>
 				                            </div>
 				                            <div class="work-description">
-				                                <p>Nullam volutpat, mauris scelerisque iaculis semper, justo odio rutrum urna, at cursus urna nisl et ipsum. Donec dapibus lacus nec sapien faucibus eget suscipit lorem mattis.</p>
-				                                <p>Donec non mauris ac nulla consectetur pretium sit amet rhoncus neque. Maecenas aliquet, diam sed rhoncus vestibulum,<strong> sem lacus ultrice</strong>s est, eu hendrerit tortor nulla in dui. Suspendisse enim purus, euismod interdum viverra eget, ultricies eu est. Maecenas dignissim mauris id est semper suscipit. Suspendisse venenatis vestibulum quam, quis porttitor arcu vestibulum et.</p>
-				                                <p>Sed <a href="http://yourinspirationweb.com/demo/sheeva/work/xmas-icons/#">porttitor eros </a>ut purus elementum a consectetur purus vulputate</p>
+				                                <p>{{$portfolio->text}}</p>
 				                                <div class="clear"></div>
 				                                <div class="work-skillsdate">
-				                                    <p class="skills"><span class="label">Skills:</span> Illustrator</p>
-				                                    <p class="workdate"><span class="label">Customer:</span> Steep This!</p>
-				                                    <p class="workdate"><span class="label">Year:</span> 2012</p>
+				                                    <p class="skills"><span class="label">Skills:</span> {{ $portfolio->filter->title }}</p>
+				                                    <p class="workdate"><span class="label">Customer:</span> {{$portfolio->customer }}</p>
+				                                    <p class="workdate"><span class="label">Year:</span> {{ $portfolio->created_at->format('Y') }}</p>
 				                                </div>
 				                            </div>
 				                            <div class="clear"></div>
@@ -74,6 +75,8 @@
 				                            
 				                        </div>
 				                    </div>
+
+				                    @endif
 				                    <div class="clear"></div>
 				                </div>
 				            </div>
