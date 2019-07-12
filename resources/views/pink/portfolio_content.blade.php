@@ -28,51 +28,23 @@
 				                        </div>
 				                        
 				                        <div class="clear"></div>
+
+				                        @if(!$portfolios->isEmpty())
 				                        
 				                        <h3>Other Projects</h3>
 				                        
 				                        <div class="portfolio-full-description-related-projects">
+
+				                        	@foreach($portfolios as $portfolio)
 				                            
 				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Love"><img src="images/projects/0061-175x175.jpg" alt="0061" title="0061" /></a>
-				                                <h4><a href="#">Love</a></h4>
+				                                <a class="related_proj related_img" href="{{route('portfolios.show', ['alias'=>$portfolio->alias])}}" title="{{$portfolio->title}}"><img src="{{asset(env('THEME'))}}/images/projects/{{$portfolio->img->mini}}" alt="0061" title="0061" /></a>
+				                                <h4><a href="{{route('portfolios.show', ['alias'=>$portfolio->alias])}}">{{$portfolio->title}}</a></h4>
 				                            </div>
 				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Kineda"><img src="images/projects/0071-175x175.jpg" alt="0071" title="0071" /></a>
-				                                <h4><a href="#">Kineda</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Guanacos"><img src="images/projects/009-175x175.jpg" alt="009" title="009" /></a>
-				                                <h4><a href="#">Guanacos</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Miller Bob"><img src="images/projects/0011-175x175.jpg" alt="0011" title="0011" /></a>
-				                                <h4><a href="#">Miller Bob</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="VItale Premium"><img src="images/projects/0027-175x175.jpg" alt="0027" title="0027" /></a>
-				                                <h4><a href="#">VItale Premium</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project_last related_project">
-				                                <a class="related_proj related_img" href="#" title="Nili Studios"><img src="images/projects/0034-175x175.jpg" alt="0034" title="0034" /></a>
-				                                <h4><a href="#">Nili Studios</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Digitpool Medien"><img src="images/projects/0043-175x175.jpg" alt="0043" title="0043" /></a>
-				                                <h4><a href="#">Digitpool Medien</a></h4>
-				                            </div>
-				                            
-				                            <div class="related_project">
-				                                <a class="related_proj related_img" href="#" title="Octopus"><img src="images/projects/0052-175x175.jpg" alt="0052" title="0052" /></a>
-				                                <h4><a href="#">Octopus</a></h4>
-				                            </div>
-				                            
+				                            @endforeach
+
+				                            @endif
 				                        </div>
 				                    </div>
 
