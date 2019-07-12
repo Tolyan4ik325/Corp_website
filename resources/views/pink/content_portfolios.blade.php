@@ -1,6 +1,6 @@
 <div id="content-page" class="content group">
 				            <div class="hentry group">
-				                <script>
+				                <!-- <script>
 				                    jQuery(document).ready(function($){
 				                    	$('.sidebar').remove();
 				                    	
@@ -9,7 +9,7 @@
 				                    	}
 				                    	
 				                    });
-				                </script>
+				                </script> -->
 				                <div id="portfolio" class="portfolio-big-image">
 				                    
 				                    <div class="hentry work group">
