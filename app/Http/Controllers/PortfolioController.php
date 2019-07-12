@@ -30,7 +30,7 @@ class PortfolioController extends SiteController
 
     	$portfolios = $this->getPortfolios();
 
-    	dd($portfolios);
+    	// dd($portfolios);
 
         
          $content = view(env('THEME').'.portfolios_content')->with('portfolios', $portfolios)->render();
