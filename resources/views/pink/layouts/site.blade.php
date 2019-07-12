@@ -85,7 +85,7 @@
     <!-- END HEAD -->
     
     <!-- START BODY -->
-    <body class="no_js responsive {{ Route::currentRouteName() == 'home' ? 'page-template-home-php' : '' }} stretched">
+    <body class="no_js responsive {{ (Route::currentRouteName() == 'home') || (Route::currentRouteName() == 'portfolios.index') ? 'page-template-home-php' : '' }} stretched">
         
         <!-- START BG SHADOW -->
         <div class="bg-shadow">
@@ -131,6 +131,18 @@
                 <div class="wrap_result">
                     
                 </div>
+                
+                @if(Route::currentRouteName() == 'portfolios.index')
+                <!-- START PAGE META -->
+                <div id="page-meta">
+                    <div class="inner group">
+                        <h3>Welcome to my portfolio page</h3>
+                        <h4>... i hope you enjoy my works</h4>
+                    </div>
+                </div>
+                <!-- END PAGE META -->
+                @endif
+
 
 				<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'no'}}">
