@@ -40,6 +40,19 @@ jQuery(document).ready(function($) {
 															comParent.parents('div#respond').prev().after('<ul class="children">' + html.comment + '</ul>');
 														}
 
+														else {
+															if($.contains('#comments', 'ol.commentlist')) {
+																$('ol.commentlist').append(html.comment);
+															}
+
+															else {
+
+																$('#respond').before('<ol class="commentlist group">' + html.comment + '</ol>');
+
+
+															}
+														}
+
 														$('$cancel-comment-reply-link').click();
 
 													})
