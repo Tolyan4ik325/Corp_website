@@ -76,7 +76,7 @@ class ArticlesController extends SiteController
             $where = ['category_id', $id];
         }
         
-        $articles = $this->a_rep->get(['id','title', 'alias', 'created_at', 'img', 'desc', 'user_id', 'category_id'], FALSE, TRUE, $where);
+        $articles = $this->a_rep->get(['id','title', 'alias', 'created_at', 'img', 'desc', 'user_id', 'category_id', 'keywords', 'meta_desc'], FALSE, TRUE, $where);
             
         if($articles) {
            $articles->load('user', 'category', 'comments');
@@ -90,6 +90,10 @@ class ArticlesController extends SiteController
         $article = $this->a_rep->one($alias, ['comments' => TRUE]);
 
         // dd($article->comments->groupBy('parent_id'));
+
+        $this->title = $article->title;
+        $this->keywords = $article->keywords;
+        $this->meta_desc = $article->meta_desc;
 
         $content = view(env('THEME').'.article_content')->with('article', $article)->render();
         $this->vars = array_add($this->vars, 'content', $content);
