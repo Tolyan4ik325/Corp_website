@@ -1,3 +1,20 @@
+@if (count($errors) > 0)
+				    <div class="box error-box">
+				        
+				            @foreach ($errors->all() as $error)
+				                <p>{{ $error }}</p>
+				            @endforeach
+				   
+				    </div>
+				@endif
+				
+				@if (session('status'))
+				    <div class="box success-box">
+				        {{ session('status') }}
+				    </div>
+				@endif
+
+
 <div id="content-page" class="content group">
 				            <div class="hentry group">
 				                <form id="contact-form-contact-us" class="contact-form" method="post" action="sendmail.PHP" enctype="multipart/form-data">
