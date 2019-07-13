@@ -1,7 +1,7 @@
 <?php
 
 namespace Corp\Http\Controllers;
-
+use Corp\Repositories\MenusRepository;
 use Illuminate\Http\Request;
 
 class ContactsController extends SiteController
