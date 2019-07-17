@@ -57,6 +57,23 @@ Route::post('login', 'Auth\LoginController@login');
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+
+// Admin
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+
+	// admin
+
+	Route::get('/', ['uses' => 'Admin\IndexController@index', 'as' => 'adminIndex']);
+
+	Route::resource('/articles', 'Admin\ArticlesController');
+
+
+});
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
