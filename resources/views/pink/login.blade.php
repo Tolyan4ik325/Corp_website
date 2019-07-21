@@ -16,14 +16,14 @@
 				                    <fieldset>
 				                        <ul>
 				                            <li class="text-field">
-				                                <label for="login">
+				                                <label for="email">
 				                                <span class="label">Name</span>
 				                                <br />					<span class="sublabel">This is the name</span><br />
 				                                </label>
-				                                <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input type="text" name="login" id="login" class="required" value="" /></div>
-				                                 @if ($errors->has('login'))
+				                                <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input type="text" name="email" id="email" class="required" value="" /></div>
+				                                 @if ($errors->has('email'))
 				                                    <span class="help-block">
-				                                        <strong>{{ $errors->first('login') }}</strong>
+				                                        <strong>{{ $errors->first('email') }}</strong>
 				                                    </span>
 				                                @endif
 				                            </li>

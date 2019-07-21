@@ -29,12 +29,12 @@ class LoginController extends Controller
 
     
 
-     protected $loginView;
+     // protected $loginView;
      
-     protected $username = 'login';
+     // protected $username = 'login';
      
      
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -45,19 +45,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
 
-        $this->loginView = env('THEME').'.login';
+        // $this->loginView = env('THEME').'.login';
     }
+
+    // public function showLoginForm()
+    // {
+    //     $view = property_exists($this, 'loginView')
+    //                 ? $this->loginView : '';
+
+    //     if (view()->exists($view)) {
+    //         return view($view)->with('title', 'Вход на сайт');
+    //     }
+
+    //     abort(404);
+    // }
 
     public function showLoginForm()
     {
-        $view = property_exists($this, 'loginView')
-                    ? $this->loginView : '';
-
-        if (view()->exists($view)) {
-            return view($view)->with('title', 'Вход на сайт');
-        }
-
-        abort(404);
+        return view(env('THEME').'.login');
     }
 
 }

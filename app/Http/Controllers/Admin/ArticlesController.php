@@ -3,6 +3,8 @@
 namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+
+use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
 class ArticlesController extends Controller
