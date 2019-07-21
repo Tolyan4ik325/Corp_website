@@ -1,7 +1,7 @@
 <?php
 
 namespace Corp\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +25,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected $loginView;
+
+     public function username()
+    {
+        return 'login';
+    }
+
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -35,10 +43,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+        $this->loginView = env('THEME').'.login';
     }
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view($this->loginView)->with('title', 'Вход на сайт');
+
+        
     }
+
 }
