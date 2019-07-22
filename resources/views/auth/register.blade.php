@@ -62,6 +62,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="login" class="col-md-4 control-label">Your login</label>
+
+                            <div class="col-md-6">
+                                <input id="login" type="text" class="form-control" name="login" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
