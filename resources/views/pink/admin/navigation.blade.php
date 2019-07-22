@@ -1,4 +1,4 @@
-@if(menu)
+@if($menu)
 	<div class="menu classic">
 		
 		{!! $menu->asUl(['class'=>'menu']) !!}

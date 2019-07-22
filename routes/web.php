@@ -56,15 +56,21 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
+
+
+
 //admin
-Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
-
-    
-
+Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware'=> 'auth'],function() {
 	// //admin
-	Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
+
+	
+	Route::get('/', 'Admin\IndexController@index');
 	
 	Route::resource('/articles','Admin\ArticlesController');
 	
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

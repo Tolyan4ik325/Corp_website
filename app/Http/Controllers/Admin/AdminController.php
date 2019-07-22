@@ -1,13 +1,12 @@
 <?php
 
 namespace Corp\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
-use Auth;
 
 use Menu;
 
@@ -20,24 +19,30 @@ class AdminController extends \Corp\Http\Controllers\Controller
     protected $a_rep;
     
     protected $user;
+
+    protected $menu;
     
     protected $template;
     
-    protected $content = FALSE;
+    protected $content;
     
     protected $title;
     
     protected $vars;
-    
+
     public function __construct() {
         
-        $this->user = Auth::user();
-        
-        // if(!$this->user) {
-        //     abort(403);
-        // }
-    }
-    
+        $this->middleware('auth');
+            $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+
+            return $next($request);
+            if(!$this->user) {
+            abort(403);
+            }
+        });    
+        }
+   
     public function renderOutput() {
         $this->vars = array_add($this->vars,'title',$this->title);
         
