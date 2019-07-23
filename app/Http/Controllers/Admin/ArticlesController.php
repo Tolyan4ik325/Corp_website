@@ -35,7 +35,18 @@ class ArticlesController extends AdminController
         //
         $this->title = 'Менеджер статтей';
 
+        $articles = $this->getArticles();
+
+        $this->content = view(env('THEME').'.admin.articles_content')->with('articles', $articles)->render();
+
         return $this->renderOutput();
+    }
+
+     public function getArticles()
+    {
+        //
+
+        return $this->a_rep->get();
     }
 
     /**
