@@ -29,15 +29,16 @@ class AdminController extends \Corp\Http\Controllers\Controller
     
     protected $title;
     
+    protected $role;
+
     protected $vars;
 
     public function __construct() {
-        
-        $this->middleware('auth');
+            
             $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
 
-            if(Gate::denies('VIEW_ADMIN')) {
+            if(Gate::denies($this->role)) {
             abort(403);
             }
 
@@ -45,7 +46,7 @@ class AdminController extends \Corp\Http\Controllers\Controller
             if(!$this->user) {
             abort(403);
             }
-
+            
         });
 
         }

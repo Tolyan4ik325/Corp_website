@@ -2,13 +2,29 @@
 
 namespace Corp\Http\Controllers\Admin;
 
+
+use Corp\Repositories\ArticlesRepository;
+
 use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
-class ArticlesController extends Controller
+class ArticlesController extends AdminController
 {
+
+    public function __construct(ArticlesRepository $a_rep) {
+        
+        $this->role = 'VIEW_ADMIN_ARTICLES';
+
+        parent::__construct();
+        
+        // 
+        $this->template = env('THEME').'.admin.articles';
+        
+        $this->a_rep = $a_rep;
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -11,13 +11,13 @@ use Gate;
 class IndexController extends AdminController
 {
     //
-    
+    // protected $role;
+
     public function __construct() {
 		
+    	$this->role = 'VIEW_ADMIN';
 		parent::__construct();
-		 if(!Gate::denies('VIEW_ADMIN')) {
-            abort(403);
-            }
+		 
 		// 
 		$this->template = env('THEME').'.admin.index';
 		
