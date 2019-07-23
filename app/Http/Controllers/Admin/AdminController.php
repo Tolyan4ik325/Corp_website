@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
+use Gate;
 
 use Menu;
 
@@ -36,11 +37,17 @@ class AdminController extends \Corp\Http\Controllers\Controller
             $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
 
+            if(Gate::denies('VIEW_ADMIN')) {
+            abort(403);
+            }
+
             return $next($request);
             if(!$this->user) {
             abort(403);
             }
-        });    
+
+        });
+
         }
    
     public function renderOutput() {

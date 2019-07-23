@@ -3,7 +3,7 @@
 namespace Corp;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Permisson;
 class Role extends Model
 {
     //
@@ -13,6 +13,6 @@ class Role extends Model
     }
 
     public function perms() {
-    	return $this->belongsToMany('Corp\Permisson', 'permisson_role');
+    	return $this->belongsToMany('Corp\Permission', 'permission_role');
     }
 }
