@@ -33,6 +33,9 @@ class ArticlesController extends AdminController
     public function index()
     {
         //
+        $this->title = 'Менеджер статтей';
+
+        return $this->renderOutput();
     }
 
     /**
