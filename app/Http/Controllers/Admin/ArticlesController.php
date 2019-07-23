@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Corp\Http\Requests;
 use Corp\Http\Controllers\Controller;
 
+use Corp\Category;
+
 class ArticlesController extends AdminController
 {
 
@@ -61,6 +63,26 @@ class ArticlesController extends AdminController
         if(Gate::denies('save', new \Corp\Article)) {
             abort(403);
         }
+
+        $this->title = "Добавить новый материал";
+
+        $categories = Category::select(['title', 'alias','parent_id', 'id'])->get();
+        
+
+        $lists = array();
+
+        foreach ($categories as $category) {
+            if($category->parent_id == 0) {
+                $lists[$category->title] = array();
+            }
+
+            else {
+                $lists[$categories->where('id', $category->parent_id)->first()->title][$category->id] = $category->title;
+            }
+        }
+        $this->content = view(env('THEME').'.admin.articles_create_content')->with('categories', $lists)->render();
+        
+        return $this->renderOutput();
     }
 
     /**
