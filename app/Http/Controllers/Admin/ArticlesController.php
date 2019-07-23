@@ -2,6 +2,7 @@
 
 namespace Corp\Http\Controllers\Admin;
 
+use Gate;
 
 use Corp\Repositories\ArticlesRepository;
 
@@ -57,6 +58,9 @@ class ArticlesController extends AdminController
     public function create()
     {
         //
+        if(Gate::denies('save', new \Corp\Article)) {
+            abort(403);
+        }
     }
 
     /**

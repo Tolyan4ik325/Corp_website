@@ -4,7 +4,9 @@ namespace Corp\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Corp\Permisson;
+
+use Corp\Article;
+use Corp\Policies\ArticlePolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Corp\Model' => 'Corp\Policies\ModelPolicy',
+        Article::class => ArticlePolicy::class
     ];
 
     /**
