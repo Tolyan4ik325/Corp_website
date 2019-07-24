@@ -13,7 +13,17 @@ class ArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return \Auth::user()->canDo('ADD_ARTICLES');
+    }
+
+    protected function getValidatorInstance() {
+        $validator = parent::getValidatorInstance();
+
+         $validator->sometimes('alias', 'unique:articles|max:255', function($input) {
+            return !empty($input->alias);
+        });
+
+         return $validator;
     }
 
     /**
@@ -23,6 +33,8 @@ class ArticleRequest extends FormRequest
      */
     public function rules()
     {
+
+       
         return [
             //
             'title' => 'required|max:255',
