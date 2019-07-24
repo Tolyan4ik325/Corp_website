@@ -94,6 +94,9 @@ class Repository {
 		}
 
 		$str = preg_replace('/(\s|[^A-Za-z0-9\-])+/ ', '-', $str);
+
+		$str = trim($str,'-');
+		return $str;
 	}
 
 }
