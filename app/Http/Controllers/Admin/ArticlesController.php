@@ -94,6 +94,8 @@ class ArticlesController extends AdminController
     public function store(Request $request)
     {
         //
+
+        dd($request);
     }
 
     /**
