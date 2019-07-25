@@ -3,6 +3,7 @@ namespace Corp\Repositories;
 
 use Corp\Article;
 use Gate;
+use Image;
 class ArticlesRepository extends Repository{
 
 	public function __construct(Article $articles) {
@@ -40,6 +41,25 @@ class ArticlesRepository extends Repository{
 
 			$request->flash();
 			return ['error' => 'Данный псевдоним уже используется'];
+		}
+
+		if($request->hasFile('image')) {
+			$image = $request->file('image');
+
+			if($image->isValid()) {
+				$str = str_random(8);
+
+				$obj = new \stdClass;
+
+				$obj->mini = $str.'_mini.jpg';
+				$obj->max = $str.'_max.jpg';
+				$obj->path = $str. '.jpg';
+
+				$img = Image::make($image);
+
+
+				$img->crop();
+			}
 		}
 	}
 }
