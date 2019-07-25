@@ -4,6 +4,9 @@ namespace Corp\Repositories;
 use Corp\Article;
 use Gate;
 use Image;
+
+use Config;
+
 class ArticlesRepository extends Repository{
 
 	public function __construct(Article $articles) {
@@ -57,8 +60,12 @@ class ArticlesRepository extends Repository{
 
 				$img = Image::make($image);
 
+				$img->fit(Config::get('settings.image')['width'], Config::get('settings.image')['height'])->save(public_path().'/'.env('THEME').'/images/articles/'.$obj->path);
 
-				$img->crop();
+				$img->fit(Config::get('settings.articles_img')['max']['width'], Config::get('settings.articles_img')['max']['height'])->save(public_path().'/'.env('THEME').'/images/articles/'.$obj->max);
+				$img->fit(Config::get('settings.articles_img')['mini']['width'], Config::get('settings.articles_img')['mini']['height'])->save(public_path().'/'.env('THEME').'/images/articles/'.$obj->mini);
+
+				dd(Config::get('settings.image')['width']);
 			}
 		}
 	}
