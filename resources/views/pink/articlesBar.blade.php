@@ -14,6 +14,8 @@
 				                        			</div>
 												</div>
 											@endforeach
+											@else 
+											<p>Нету работ</p>
 				                    	@endif     
 				                </div>
 				            </div>
@@ -35,8 +37,14 @@
                                         		</p>
 				                    		</div>
 				                    	@endforeach
+
 				                	</div>
 				                </div>
+								@else
+
+				            	<p>Нету комментариев</p>
+				            
+
 				            @endif
 				            
 				            
