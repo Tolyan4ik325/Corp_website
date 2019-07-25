@@ -5,13 +5,27 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 
-class PermissionsController extends Controller
+class PermissionsController extends AdminController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(ArticlesRepository $a_rep) {
+        
+        $this->role = 'VIEW_ADMIN_ARTICLES';
+
+        parent::__construct();
+        
+        // 
+        $this->template = env('THEME').'.admin.articles';
+        
+        $this->a_rep = $a_rep;
+    }
+
+    
     public function index()
     {
         //
