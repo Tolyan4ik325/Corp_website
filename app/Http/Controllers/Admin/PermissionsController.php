@@ -37,8 +37,31 @@ class PermissionsController extends AdminController
     public function index()
     {
         //
+        $this->title = "Менеджер прав пользователей";
+
+        $roles = $this->getRoles();
+        $permissions = $this->getPermissions();
+
+        $this->content = view(env('THEME').'.admin.permissions_content')->with(['roles'=>$roles, 'priv'=>$permissions])->render();
+
+        return $this->renderOutput();
     }
 
+     public function getRoles()
+    {
+        //
+        $roles = $this->rol_rep->get();
+
+        return $roles;
+    }
+
+         public function getPermissions()
+    {
+        //
+        $permissions = $this->per_rep->get();
+
+        return $permissions;
+    }
     /**
      * Show the form for creating a new resource.
      *
