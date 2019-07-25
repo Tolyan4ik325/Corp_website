@@ -128,7 +128,9 @@ class ArticlesController extends AdminController
         //
 
       // $article =  Article::where('alias', $alias);
-        dd($article);
+        if(Gate::denies('edit', new Article)) {
+            abort(403);
+        }
     }
 
     /**
