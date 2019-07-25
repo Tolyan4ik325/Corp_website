@@ -64,13 +64,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin','middleware'=> 'auth'],funct
 	// //admin
 
 	
-	Route::get('/', 'Admin\IndexController@index');
+	Route::get('/', ['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
 	
 	Route::resource('/articles','Admin\ArticlesController');
 	
 });
 
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
