@@ -35,7 +35,12 @@ class ArticlesRepository extends Repository{
 			$data['alias'] = $this->transliterate($data['title']);
 		}
 
-		dd($data);
+		if($this->one($data['alias'], FALSE)) {
+			$request->merge(array('alias' => $data['alias']));
+
+			$request->flash();
+			return ['error' => 'Данный псевдоним уже используется'];
+		}
 	}
 }
 
