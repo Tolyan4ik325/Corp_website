@@ -1,7 +1,6 @@
 <?php
 
 namespace Corp\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class ArticleRequest extends FormRequest
@@ -19,13 +18,20 @@ class ArticleRequest extends FormRequest
     protected function getValidatorInstance() {
         $validator = parent::getValidatorInstance();
 
+        
+
          $validator->sometimes('alias', 'unique:articles|max:255', function($input) {
-            return !empty($input->alias);
-        });
+           
+         if($this->route()->hasParameter('article')) {
+            $model = $this->route()->parameter('article');
 
-         return $validator;
-    }
+            return ($model->alias !== $input->alias) && !empty($input->alias);
+        }
 
+         return !empty($input->alias);
+    });
+    return $validator;
+}
     /**
      * Get the validation rules that apply to the request.
      *
