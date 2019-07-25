@@ -65,7 +65,13 @@ class ArticlesRepository extends Repository{
 				$img->fit(Config::get('settings.articles_img')['max']['width'], Config::get('settings.articles_img')['max']['height'])->save(public_path().'/'.env('THEME').'/images/articles/'.$obj->max);
 				$img->fit(Config::get('settings.articles_img')['mini']['width'], Config::get('settings.articles_img')['mini']['height'])->save(public_path().'/'.env('THEME').'/images/articles/'.$obj->mini);
 
-				dd(Config::get('settings.image')['width']);
+				$data['img'] = json_encode($obj);
+
+				$this->model->fill($data);
+
+				if($request->user()->articles()->save($this->model)) {
+					return ['status' => 'Материал добавлен'];
+				}
 			}
 		}
 	}
