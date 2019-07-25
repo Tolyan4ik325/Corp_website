@@ -5,6 +5,9 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 
+use Corp\Repositories\PermissionsRepository;
+use Corp\Repositories\RolesRepository;
+
 class PermissionsController extends AdminController
 {
     /**
@@ -13,19 +16,24 @@ class PermissionsController extends AdminController
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct(ArticlesRepository $a_rep) {
+    protected $per_rep;
+    protected $rol_rep;
+
+    public function __construct(PermissionsRepository $per_rep, RolesRepository $rol_rep) {
         
-        $this->role = 'VIEW_ADMIN_ARTICLES';
+        $this->role = 'EDIT_USERS';
 
         parent::__construct();
+
+        $this->per_rep = $per_rep;
+        $this->rol_rep = $rol_rep;
         
         // 
-        $this->template = env('THEME').'.admin.articles';
+        $this->template = env('THEME').'.admin.permissions';
         
-        $this->a_rep = $a_rep;
     }
 
-    
+
     public function index()
     {
         //
