@@ -4,7 +4,7 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
-
+use Corp\Role;
 use Corp\Repositories\PermissionsRepository;
 use Corp\Repositories\RolesRepository;
 
@@ -81,6 +81,12 @@ class PermissionsController extends AdminController
     public function store(Request $request)
     {
         //
+        $result = $this->per_rep->changePermissions($request);
+
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+        return redirect('/admin')->with($result);
     }
 
     /**
