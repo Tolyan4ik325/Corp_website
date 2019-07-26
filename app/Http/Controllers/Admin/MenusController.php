@@ -4,10 +4,10 @@ namespace Corp\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
-
-use Corp\MenusRepositories\MenusRepository;
-use Corp\ArticlesRepositories\ArticlesRepository;
-use Corp\PortfoliosRepositories\PortfoliosRepository;
+use Menu;
+use Corp\Repositories\MenusRepository;
+use Corp\Repositories\ArticlesRepository;
+use Corp\Repositories\PortfoliosRepository;
 
 class MenusController extends AdminController
 {
@@ -15,7 +15,7 @@ class MenusController extends AdminController
     protected $m_rep;
 
     public function __construct(MenusRepository $m_rep, ArticlesRepository $a_rep, PortfoliosRepository $p_rep) {
-        
+
         $this->role = 'VIEW_ADMIN_MENU';
 
         parent::__construct();
@@ -41,6 +41,37 @@ class MenusController extends AdminController
     public function index()
     {
         //
+        $menu = $this->getMenus();
+
+        $this->content = view(env('THEME').'.admin.menus_content')->with('menu', $menu)->render();
+
+        return $this->renderOutput();
+    }
+
+    public function getMenus()
+    {
+        //
+        $menu = $this->m_rep->get();
+
+        if($menu->isEmpty()) {
+            return FALSE;
+        }
+
+       return Menu::make('forMenuPart', function($m) use($menu) {
+            
+            foreach($menu as $item) {
+                if($item->parent == 0) {
+                    $m->add($item->title,$item->path)->id($item->id);
+                }
+                
+                else {
+                    if($m->find($item->parent)) {
+                        $m->find($item->parent)->add($item->title,$item->path)->id($item->id);
+                    }
+                }
+            }
+            
+        });
     }
 
     /**
