@@ -9,6 +9,6 @@ class Menu extends Model
     //
 
     protected $fillable = [
-    	'title','path'
+    	'title','path', 'parent'
     ];
 }

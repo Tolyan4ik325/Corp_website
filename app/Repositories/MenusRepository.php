@@ -19,13 +19,19 @@ class MenusRepository extends Repository{
 		if(empty($data)) {
 			return ['error' => 'Нет данных'];
 		}
-
+		// dd($request->all());
 		switch ($data['type']) {
 			case 'customLink':
 				$data['path'] = $request->input('custom_link');
 				break;
 			
-
+			case 'blogLink' : 
+				if($request->input('category_alias')) {
+					if($request->input('category_alias') == 'parent') {
+						$data['path'] = route('articles.index');
+					}
+				}
+			break;
 
 		}
 		unset($data['type']);

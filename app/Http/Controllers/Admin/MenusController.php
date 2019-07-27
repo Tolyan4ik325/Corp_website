@@ -100,7 +100,7 @@ class MenusController extends AdminController
         $list = array();
 
         $list = array_add($list, '0', 'Не используется');
-        $list = array_add($list, 'parant', 'Раздел блог');
+        $list = array_add($list, 'parent', 'Раздел блог');
 
         foreach ($categories as $category) {
             if($category->parent_id == 0) {
