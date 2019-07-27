@@ -151,3 +151,10 @@
 
 </div>
 </div>
+
+
+<script>
+	jQuery(function($) {
+		$('#accordion').accordion();
+	})
+</script>
