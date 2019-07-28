@@ -24,7 +24,7 @@ class ArticlesController extends AdminController
         $this->role = 'VIEW_ADMIN_ARTICLES';
 
         parent::__construct();
-        
+         
         // 
         $this->template = env('THEME').'.admin.articles';
         
@@ -40,7 +40,7 @@ class ArticlesController extends AdminController
     {
         //
         $this->title = 'Менеджер статтей';
-
+        
         $articles = $this->getArticles();
 
         $this->content = view(env('THEME').'.admin.articles_content')->with('articles', $articles)->render();

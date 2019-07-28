@@ -11,6 +11,8 @@ use Corp\Permission;
 use Corp\Policies\ArticlePolicy;
 use Corp\Policies\PermissionPolicy;
 use Corp\Policies\MenusPolicy;
+use Corp\Policies\UserPolicy;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -21,7 +23,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Article::class => ArticlePolicy::class,
         Permission::class => PermissionPolicy::class,
-        Menu::class => MenusPolicy::class
+        Menu::class => MenusPolicy::class,
+        User::class => UserPolicy::class
     ];
 
     /**
@@ -41,16 +44,13 @@ class AuthServiceProvider extends ServiceProvider
             return $user->canDo('VIEW_ADMIN_ARTICLES', FALSE);
         });
 
-         Gate::define('EDIT_USERS', function($user) {
-            return $user->canDo('EDIT_USERS', FALSE);
-        });
          Gate::define('VIEW_ADMIN_MENU', function($user) {
             return $user->canDo('VIEW_ADMIN_MENU', FALSE);
         });
 
-        //  Gate::define('EDIT_MENU', function($user) {
-        //     return $user->canDo('EDIT_MENU', FALSE);
-        // });
+         Gate::define('EDIT_USERS', function($user) {
+            return $user->canDo('EDIT_USERS', FALSE);
+        });
 
         //
     }

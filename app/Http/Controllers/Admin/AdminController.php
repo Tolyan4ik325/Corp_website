@@ -37,7 +37,7 @@ class AdminController extends \Corp\Http\Controllers\Controller
             
             $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
-
+            
             if(Gate::denies($this->role)) {
             abort(403);
             }
@@ -80,7 +80,7 @@ class AdminController extends \Corp\Http\Controllers\Controller
             
             $menu->add('Портфолио',  array('route'  => 'admin.articles.index'));
             $menu->add('Меню',  array('route'  => 'admin.menus.index'));
-            $menu->add('Пользователи',  array('route'  => 'admin.articles.index'));
+            $menu->add('Пользователи',  array('route'  => 'admin.users.index'));
             $menu->add('Привилегии',  array('route'  => 'admin.permissions.index'));
             
             
