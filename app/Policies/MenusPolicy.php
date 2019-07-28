@@ -32,4 +32,10 @@ class MenusPolicy
 
         return $user->canDo('EDIT_MENU');
     }
+    public function destroy(User $user)
+    {
+        //
+
+        return $user->canDo('DELETE_MENU');
+    }
 }

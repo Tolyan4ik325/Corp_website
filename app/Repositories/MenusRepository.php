@@ -108,6 +108,15 @@ class MenusRepository extends Repository{
 		}
 
 }
+public function deleteMenuItem($menu) {
+		if(\Gate::denies('destroy', $menu)) {
+			abort(403);
+		}
+
+		if($menu->delete()) {
+				return ['status' => 'Ссылка удалена'];
+		}
+	}
 }
 
 ?>
